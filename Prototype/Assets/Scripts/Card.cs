@@ -11,7 +11,7 @@ public class Card : MonoBehaviour
     public string m_name = "";   // card properties
     public string m_cArea = "";   // what makes a card
 
-    void MoveCardTo(string newDeck)
+    public void MoveCardTo(string newDeck)
     {
         if (newDeck != m_cArea)         // checks to see if the card actually moved
         {                       // if yes..
