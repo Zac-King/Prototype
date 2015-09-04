@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
 {
     public string m_name = "";   // card properties
     public string m_cArea = "";   // what makes a card
+    public string m_nArea = "";
 
     public void MoveCardTo(string newDeck)
     {
@@ -17,11 +18,11 @@ public class Card : MonoBehaviour
         {                       // if yes..
             newDeck = newDeck.ToLower();                                              // make sure the end are is correctly formatted
             List<GameObject> temp = null;                                   //
-            if (TableManager.instance.m_table.TryGetValue(newDeck, out temp))    // and make sure the end area exist
-            {                                                               // if yes...
-                TableManager.instance.m_table[newDeck].Add(gameObject);          // add card to new area
-                TableManager.instance.m_table[m_cArea].Remove(gameObject);     // and remove it from the old one
-                m_cArea = newDeck;                                               // set current area to new area
+            if (TableManager.instance.m_table.TryGetValue(newDeck, out temp))       // and make sure the end area exist
+            {                                                                       // if yes...
+                TableManager.instance.m_table[newDeck].Add(gameObject);             // add card to new area
+                TableManager.instance.m_table[m_cArea].Remove(gameObject);          // and remove it from the old one
+                m_cArea = newDeck;                                                  // set current area to new area
 
                 switch (m_cArea)                                            // checks what area card was just moved to
                 {                                                           //
@@ -46,5 +47,10 @@ public class Card : MonoBehaviour
             //    print("ERROR, PATH " + from.ToUpper() + " DOES NOT EXIST"); // display error
             //}
         }
+    }
+
+    void Update()
+    {
+        MoveCardTo(m_nArea);
     }
 }

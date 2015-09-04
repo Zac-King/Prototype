@@ -15,7 +15,8 @@ public class CardSpaceing : MonoBehaviour
     {
         for (int i = 0; i < a_cards.Count; ++i)
         {
-            a_cards[i].transform.position = m_min + (m_max * (i / (m_maxCards / 2)));
+            a_cards[i].transform.position = transform.position +
+                (m_min + (m_max * (i / (m_maxCards / 2))));
         }
     }
 
@@ -30,8 +31,8 @@ public class CardSpaceing : MonoBehaviour
     }
     void Start()
     {
-        m_min  = (transform.position - transform.right) / 2 * transform.localScale.x;
-        m_max  = (transform.position + transform.right) / 2 * transform.localScale.x;
+        m_min  = -transform.right / 2 * transform.localScale.x;
+        m_max  =  transform.right / 2 * transform.localScale.x;
     }
 
     void Update()
