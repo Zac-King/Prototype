@@ -20,7 +20,8 @@ public class Tran_MouseClick : MonoBehaviour {
         //Dylan Guidry
         RaycastHit hit = new RaycastHit();
         if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100.0f) 
-            && hit.transform.tag == "Player" && Input.GetMouseButtonDown(1))
+            && hit.transform.tag == "Player" && Input.GetMouseButtonDown(1) &&
+            gameObject.GetComponent<Card>().m_cArea == "hand")
         {
             // set camera to have same position as the card
             Camera.main.transform.position = transform.position;

@@ -60,14 +60,7 @@ public class GUIObjButtons : MonoBehaviour
                     }
                     break;
                 case "field": //location is field
-                    if (isDisplay == true)
-                    {
-                        _button.SetActive(true);
-                    }
-                    else
-                    {
-                        _button.SetActive(false);
-                    }
+                        _button.SetActive(false);             
                     break;
                 case "grave": //location is grave
                     break;
