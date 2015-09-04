@@ -15,7 +15,7 @@ public class Card : MonoBehaviour
     public void MoveCardTo(string newDeck)
     {
         if (newDeck != m_cArea)         // checks to see if the card actually moved
-        {                       // if yes..
+        {                               // if yes..
             newDeck = newDeck.ToLower();                                              // make sure the end are is correctly formatted
             List<GameObject> temp = null;                                   //
             if (TableManager.instance.m_table.TryGetValue(newDeck, out temp))       // and make sure the end area exist
@@ -24,27 +24,32 @@ public class Card : MonoBehaviour
                 TableManager.instance.m_table[m_cArea].Remove(gameObject);          // and remove it from the old one
                 m_cArea = newDeck;                                                  // set current area to new area
 
+                Transform parent = transform;
+
                 switch (m_cArea)                                            // checks what area card was just moved to
                 {                                                           //
                     case "deck":                                            //
-                        transform.parent = TableManager.instance.deck_pos;  //
+                        parent = TableManager.instance.deck_pos;   //
                         break;                                              //
-                    case "hand":                                            //
-                        transform.parent = TableManager.instance.hand_pos;  //
+                    case "hand":
+                        parent = TableManager.instance.hand_pos;   //
                         break;                                              //
-                    case "field":                                           //
-                        transform.parent = TableManager.instance.field_pos; //
+                    case "field":
+                        parent = TableManager.instance.field_pos;  //
                         break;                                              //
-                    case "grave":                                           //
-                        transform.parent = TableManager.instance.grave_pos; //
+                    case "grave":
+                        parent = TableManager.instance.grave_pos;  //
                         break;                                              //
                 };
 
-                transform.position = transform.parent.transform.position;   // and visually moves it there in 3d space
+                transform.parent = null;
+                transform.position = parent.position;                        // and visually moves it there in 3d space
+                transform.rotation = parent.rotation;
+                transform.parent = parent;
             }
-            //else                                                            // if the area is NOT valid
-            //{                                                               //
-            //    print("ERROR, PATH " + from.ToUpper() + " DOES NOT EXIST"); // display error
+            //else                                                              // if the area is NOT valid
+            //{                                                                 //
+            //    print("ERROR, PATH " + from.ToUpper() + " DOES NOT EXIST");   // display error
             //}
         }
     }
