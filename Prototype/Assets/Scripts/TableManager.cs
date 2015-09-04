@@ -29,22 +29,22 @@ public class TableManager : MonoBehaviour
     public List<GameObject> m_field = new List<GameObject>();   // field holds card ion play
     public List<GameObject> m_grave = new List<GameObject>();   // grave holds cards that have already been played
 
-    public Transform deck_pos;  // location in 3d space for the deck
-    public Transform hand_pos;  // location in 3d space for the hand
-    public Transform field_pos; // location in 3d space for the field
-    public Transform grave_pos; // location in 3d space for the grave
+    public Transform deck_pos;                                  // location in 3d space for the deck
+    public Transform hand_pos;                                  // location in 3d space for the hand
+    public Transform field_pos;                                 // location in 3d space for the field
+    public Transform grave_pos;                                 // location in 3d space for the grave
 
-    public void ShuffleDeck(List<GameObject> a_deck)       // randomizes the order of a given deck
+    public void ShuffleDeck(List<GameObject> a_deck)    // randomizes the order of a given deck
     {
-        GameObject temp = a_deck[0];                // temp variable to assist with swapping
+        GameObject temp = a_deck[0];                    // temp variable to assist with swapping
 
-        for (int i = 0; i < a_deck.Count; ++i)      // for each card i given deck
-        {                                           //
-            int r = Random.Range(0, a_deck.Count);  //pick another random card
+        for (int i = 0; i < a_deck.Count; ++i)          // for each card i given deck
+        {                                               //
+            int r = Random.Range(0, a_deck.Count);      //pick another random card
 
-            temp = a_deck[i];                       // set temp to the first card
-            a_deck[i] = a_deck[r];                  // set the first card to the random card
-            a_deck[r] = temp;                       // set the random card to the temp card
+            temp = a_deck[i];                           // set temp to the first card
+            a_deck[i] = a_deck[r];                      // set the first card to the random card
+            a_deck[r] = temp;                           // set the random card to the temp card
         }
 
     }
