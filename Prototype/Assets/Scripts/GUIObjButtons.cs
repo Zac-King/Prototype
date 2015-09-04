@@ -10,13 +10,14 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GUIObjButtons : MonoBehaviour
 {
     public bool isDisplay = false;
     //temporary checks to see what objects the button is on
     public int location = 2;
-
+    
 	// Use this for initialization
 	void Start ()
     {
@@ -33,7 +34,7 @@ public class GUIObjButtons : MonoBehaviour
             switch (location)
             {
                 case 1: //location of mouse is deck
-                    if (isDisplay == true)
+                    if (isDisplay == true )
                     {
                         _button.SetActive(true);
                     }
@@ -42,10 +43,21 @@ public class GUIObjButtons : MonoBehaviour
                         _button.SetActive(false);
                     }
                     break;
-                case 2: //location is deck
+                case 2: //location is hand
                     if (isDisplay == true)
                     {
-                        _button.SetActive(true);
+
+                        if (GetComponent<Tran_MouseClick>().button_appear == true)
+                        {
+                            datButton[1].SetActive(true);
+                            datButton[0].SetActive(false);
+                        }
+                        else
+                        {
+                            datButton[1].SetActive(false);
+                        datButton[0].SetActive(true);
+                        }
+
                     }
                     else
                     {
@@ -73,6 +85,16 @@ public class GUIObjButtons : MonoBehaviour
         //The button should be shown to the screen
         //need to do more stuff
 	}
+
+    public void shuffle()
+    {
+        TableManager.instance.ShuffleDeck(TableManager.instance.m_deck);
+    }
+
+    public void draw(string n)
+    {
+        TableManager.instance.m_deck[0].GetComponent<Card>().MoveCardTo(n);
+    }
 
     public void buttonActions(string n)
     {

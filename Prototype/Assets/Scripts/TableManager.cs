@@ -34,7 +34,7 @@ public class TableManager : MonoBehaviour
     public Transform field_pos; // location in 3d space for the field
     public Transform grave_pos; // location in 3d space for the grave
 
-    void ShuffleDeck(List<GameObject> a_deck)       // randomizes the order of a given deck
+    public void ShuffleDeck(List<GameObject> a_deck)       // randomizes the order of a given deck
     {
         GameObject temp = new GameObject();         // temp variable to assist with swapping
 
