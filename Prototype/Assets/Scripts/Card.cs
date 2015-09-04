@@ -10,14 +10,14 @@ public class Card : MonoBehaviour
 {
     public string m_name = "";   // card properties
     public string m_cArea = "";   // what makes a card
-    public string m_nArea = "";
+    //public string m_nArea = "";
 
     public void MoveCardTo(string newDeck)
     {
         if (newDeck != m_cArea)         // checks to see if the card actually moved
         {                               // if yes..
-            newDeck = newDeck.ToLower();                                              // make sure the end are is correctly formatted
-            List<GameObject> temp = null;                                   //
+            newDeck = newDeck.ToLower();                                            // make sure the end are is correctly formatted
+            List<GameObject> temp = null;                                           //
             if (TableManager.instance.m_table.TryGetValue(newDeck, out temp))       // and make sure the end area exist
             {                                                                       // if yes...
                 TableManager.instance.m_table[newDeck].Add(gameObject);             // add card to new area
@@ -29,21 +29,21 @@ public class Card : MonoBehaviour
                 switch (m_cArea)                                            // checks what area card was just moved to
                 {                                                           //
                     case "deck":                                            //
-                        parent = TableManager.instance.deck_pos;   //
+                        parent = TableManager.instance.deck_pos;            //
                         break;                                              //
                     case "hand":
-                        parent = TableManager.instance.hand_pos;   //
+                        parent = TableManager.instance.hand_pos;            //
                         break;                                              //
                     case "field":
-                        parent = TableManager.instance.field_pos;  //
+                        parent = TableManager.instance.field_pos;           //
                         break;                                              //
                     case "grave":
-                        parent = TableManager.instance.grave_pos;  //
+                        parent = TableManager.instance.grave_pos;           //
                         break;                                              //
                 };
 
                 transform.parent = null;
-                transform.position = parent.position;                        // and visually moves it there in 3d space
+                transform.position = parent.position;                       // and visually moves it there in 3d space
                 transform.rotation = parent.rotation;
                 transform.parent = parent;
             }
@@ -54,8 +54,8 @@ public class Card : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        MoveCardTo(m_nArea);
-    }
+    //void Update()
+    //{
+    //    MoveCardTo(m_nArea);
+    //}
 }

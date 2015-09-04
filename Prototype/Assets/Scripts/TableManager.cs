@@ -36,7 +36,7 @@ public class TableManager : MonoBehaviour
 
     public void ShuffleDeck(List<GameObject> a_deck)       // randomizes the order of a given deck
     {
-        GameObject temp = new GameObject();         // temp variable to assist with swapping
+        GameObject temp = a_deck[0];                // temp variable to assist with swapping
 
         for (int i = 0; i < a_deck.Count; ++i)      // for each card i given deck
         {                                           //
@@ -58,10 +58,4 @@ public class TableManager : MonoBehaviour
 
         ShuffleDeck(m_deck);            // shuffles the "deck" deck
     }
-
-    void Update()
-    {
-
-    }
-
 }
