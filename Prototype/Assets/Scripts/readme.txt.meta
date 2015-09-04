@@ -1,4 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 2c6d7ce9a8964dc43b3c84bd3f1eba81
+timeCreated: 1441222869
+licenseType: Pro
+=======
 guid: 141e9d320c8d5cb4893e9d421092b45b
 timeCreated: 1441222949
 licenseType: Pro
@@ -12,6 +17,7 @@ licenseType: Pro
 guid: 22e8e7e28342613458d7b2791a478743
 timeCreated: 1441223012
 licenseType: Free
+>>>>>>> chuwilliamson/master
 TextScriptImporter:
   userData: 
   assetBundleName: 

@@ -15,29 +15,63 @@ public class GUIObjButtons : MonoBehaviour
 {
     public bool isDisplay = false;
     //temporary checks to see what objects the button is on
-    public bool isDeck; 
-    public bool isHand;
-    public bool isField;
+    public int location = 2;
 
 	// Use this for initialization
 	void Start ()
     {
-        datButton.SetActive(false);
+        foreach(GameObject _button in datButton)
+        _button.SetActive(false);
 	    //sets the button to not active on game start so that it does not appear
 	}
 	
 	// Update is called once per frame
 	void Update ()
-    {   if (isDisplay == true)
+    {
+        foreach (GameObject _button in datButton)
         {
-            datButton.SetActive(true);
+            switch (location)
+            {
+                case 1: //location of mouse is deck
+                    if (isDisplay == true)
+                    {
+                        _button.SetActive(true);
+                    }
+                    else
+                    {
+                        _button.SetActive(false);
+                    }
+                    break;
+                case 2: //location is deck
+                    if (isDisplay == true)
+                    {
+                        _button.SetActive(true);
+                    }
+                    else
+                    {
+                        _button.SetActive(false);
+                    }
+                    break;
+                case 3: //location is field
+                    if (isDisplay == true)
+                    {
+                        _button.SetActive(true);
+                    }
+                    else
+                    {
+                        _button.SetActive(false);
+                    }
+                    break;
+                case 4: //location is grave
+                    break;
+            }
+
+
         }
-        else
-        {
-            datButton.SetActive(false);
-        }
+
         //checks if the isDisplay boolean is true or false and this will determine if
         //The button should be shown to the screen
+        //need to do more stuff
 	}
 
     public void buttonActions(string n)
@@ -60,8 +94,9 @@ public class GUIObjButtons : MonoBehaviour
                            //we set isDisplay to false
     }
 
-    public GameObject datButton; //gamebject refrence to the button associated with an function
-                                 //we wish to execute
+    public GameObject[] datButton; //gamebject refrence to the button associated with an function
+                                 //we wish to execute. Objects now have multiple buttons for multiple
+                                 //fucntions 
 
     
 }

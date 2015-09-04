@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/******
+* Author : Eric Mouledoux
+*
+*
+******/
+using UnityEngine;
 using System.Collections;
 
 public class FSM_PlayerTurn : MonoBehaviour
@@ -15,6 +20,7 @@ public class FSM_PlayerTurn : MonoBehaviour
 
     // the current state
     public STATE m_cState = STATE.INIT;
+    // the next state
     public STATE m_nSteate = STATE.INIT;
 
     // checks for a valid transition
