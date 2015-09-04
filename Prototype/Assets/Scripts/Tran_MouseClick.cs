@@ -19,7 +19,7 @@ public class Tran_MouseClick : MonoBehaviour {
         // set camera to have same position as the card
         Camera.main.transform.position = transform.position;
         // set z-axis for camera to step back (You can change the value of z if needed)
-        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -1.44f);
+        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -20f);
 
         button_appear = true;
     }

@@ -34,7 +34,7 @@ public class GUIObjButtons : MonoBehaviour
             switch (location)
             {
                 case 1: //location of mouse is deck
-                    if (isDisplay == true)
+                    if (isDisplay == true )
                     {
                         _button.SetActive(true);
                     }
@@ -43,10 +43,21 @@ public class GUIObjButtons : MonoBehaviour
                         _button.SetActive(false);
                     }
                     break;
-                case 2: //location is deck
+                case 2: //location is hand
                     if (isDisplay == true)
                     {
-                        _button.SetActive(true);
+
+                        if (GetComponent<Tran_MouseClick>().button_appear == true)
+                        {
+                            datButton[1].SetActive(true);
+                            datButton[0].SetActive(false);
+                        }
+                        else
+                        {
+                            datButton[1].SetActive(false);
+                        datButton[0].SetActive(true);
+                        }
+
                     }
                     else
                     {
