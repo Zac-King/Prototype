@@ -5,7 +5,7 @@ public class AnimateMove : MonoBehaviour
 {
     public GameObject animateMoveTo;
     public int speed;
-    public float closenessRadius;
+    public float Radius;
     float dt = 0;
     
 	
@@ -13,8 +13,11 @@ public class AnimateMove : MonoBehaviour
 	void Update ()
     {
         dt = Time.deltaTime;
-        if(Distance(transform.position, animateMoveTo.transform.position) > closenessRadius)
-        gameObject.transform.position += ((transform.position + animateMoveTo.transform.position) / 100) * dt *speed;
+        if (Distance (transform.position, animateMoveTo.transform.position) > Radius) 
+		{
+			transform.position += ((gameObject.transform.position + animateMoveTo.transform.position) / 100) * dt *speed;
+		}
+        
 	}
 
     float Distance(Vector3 from, Vector3 to)
