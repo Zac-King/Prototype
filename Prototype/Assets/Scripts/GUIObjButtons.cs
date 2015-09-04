@@ -16,7 +16,7 @@ public class GUIObjButtons : MonoBehaviour
 {
     public bool isDisplay = false;
     //temporary checks to see what objects the button is on
-    public int location = 2;
+    public string location;
     
 	// Use this for initialization
 	void Start ()
@@ -31,22 +31,18 @@ public class GUIObjButtons : MonoBehaviour
     {
         foreach (GameObject _button in datButton)
         {
-            switch (location)
+            if (location == "deck" && isDisplay)
+                _button.SetActive(true);
+            else
+                _button.SetActive(false);
+
+            if(location != "deck")
+            switch (gameObject.GetComponent<Card>().m_cArea)
             {
-                case 1: //location of mouse is deck
-                    if (isDisplay == true )
-                    {
-                        _button.SetActive(true);
-                    }
-                    else
-                    {
-                        _button.SetActive(false);
-                    }
-                    break;
-                case 2: //location is hand
+                case "hand": //location is hand
                     if (isDisplay == true)
                     {
-
+                        datButton[0].SetActive(true);
                         if (GetComponent<Tran_MouseClick>().button_appear == true)
                         {
                             datButton[1].SetActive(true);
@@ -55,7 +51,6 @@ public class GUIObjButtons : MonoBehaviour
                         else
                         {
                             datButton[1].SetActive(false);
-                        datButton[0].SetActive(true);
                         }
 
                     }
@@ -64,7 +59,7 @@ public class GUIObjButtons : MonoBehaviour
                         _button.SetActive(false);
                     }
                     break;
-                case 3: //location is field
+                case "field": //location is field
                     if (isDisplay == true)
                     {
                         _button.SetActive(true);
@@ -74,7 +69,7 @@ public class GUIObjButtons : MonoBehaviour
                         _button.SetActive(false);
                     }
                     break;
-                case 4: //location is grave
+                case "grave": //location is grave
                     break;
             }
 

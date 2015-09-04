@@ -13,16 +13,34 @@ public class Tran_MouseClick : MonoBehaviour {
         camPos = Camera.main.transform.position;
     }
 
-    // zoom to the card when left mouse click
-    void OnMouseDown()
+    void Update()
     {
-        // set camera to have same position as the card
-        Camera.main.transform.position = transform.position;
-        // set z-axis for camera to step back (You can change the value of z if needed)
-        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -20f);
+        //Zooms the camera into the card. Had to move the loaction out of the OnMouseDown function
+        //to make the camera zoom in only on a right click not left click
+        //Dylan Guidry
+        RaycastHit hit = new RaycastHit();
+        if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100.0f) 
+            && hit.transform.tag == "Player" && Input.GetMouseButtonDown(1))
+        {
+            // set camera to have same position as the card
+            Camera.main.transform.position = transform.position;
+            // set z-axis for camera to step back (You can change the value of z if needed)
+            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -20f);
 
-        button_appear = true;
+            button_appear = true;
+        }
     }
+
+    //zoom to the card when left mouse click
+    //void OnMouseDown()
+    //{
+    //    // set camera to have same position as the card
+    //    Camera.main.transform.position = transform.position;
+    //    // set z-axis for camera to step back (You can change the value of z if needed)
+    //    Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -20f);
+
+    //    button_appear = true;
+    //}
 
     // use this for Button ClickOn() to return the camera back to the original position
     public void zoom_Back()
