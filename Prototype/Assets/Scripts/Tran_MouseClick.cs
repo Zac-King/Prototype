@@ -20,14 +20,14 @@ public class Tran_MouseClick : MonoBehaviour {
         //Dylan Guidry
         RaycastHit hit = new RaycastHit();
         if(Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100.0f) 
-            && hit.transform.tag == "Player" && Input.GetMouseButtonDown(1) &&
-            gameObject.GetComponent<Card>().m_cArea == "hand")
+        && hit.transform.tag == "card" && Input.GetMouseButtonDown(1) &&
+           (gameObject.GetComponent<Card>().m_cArea == "hand"))
         {
             // set camera to have same position as the card
-            Camera.main.transform.position = transform.position;
+            //Camera.main.transform.position = transform.position;
             // set z-axis for camera to step back (You can change the value of z if needed)
-            Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y, -20f);
-
+                //Camera.main.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 10, gameObject.transform.position.z);
+            Camera.main.transform.position = gameObject.transform.position + (transform.forward * 25);
             button_appear = true;
         }
     }
