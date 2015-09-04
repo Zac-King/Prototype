@@ -42,7 +42,7 @@ public class GUIObjButtons : MonoBehaviour
                 case "hand": //location is hand
                     if (isDisplay == true)
                     {
-                        datButton[0].SetActive(true);
+
                         if (GetComponent<Tran_MouseClick>().button_appear == true)
                         {
                             datButton[1].SetActive(true);
@@ -51,6 +51,7 @@ public class GUIObjButtons : MonoBehaviour
                         else
                         {
                             datButton[1].SetActive(false);
+                            datButton[0].SetActive(true);
                         }
 
                     }
