@@ -15,5 +15,10 @@ public class Tran_testAudio : MonoBehaviour {
         {
             GetComponent<Tran_AudioManager>().Exit_Audio();
         }
+		
+		if (Input.GetKeyDown(KeyCode.S))
+        {
+            GetComponent<Tran_AudioManager>().Shuffle_Audio();
+        }
     }
 }
