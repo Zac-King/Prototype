@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class FSM_GamePlay : MonoBehaviour
 {
@@ -7,7 +8,9 @@ public class FSM_GamePlay : MonoBehaviour
     /// Control the flow  
     /// 
 
-    enum States /// PlaceHolders
+    public List<GameObject> players;
+
+    public enum States /// PlaceHolders
     {
         STATE1,
         STATE2,
@@ -15,7 +18,7 @@ public class FSM_GamePlay : MonoBehaviour
         STATE4
     }
 
-    States currentState = States.STATE1;
+    public States currentState = States.STATE1;
 
     bool CheckTransistion( States to)
     {
@@ -70,24 +73,36 @@ public class FSM_GamePlay : MonoBehaviour
             {
                 case (States.STATE1):
                     /// PlaceHolder
+                    EndAll();
+                    NextTurn();
+                    /// 
                     PrintDebugText(currentState, to);
                     currentState = States.STATE1;
                     break;
 
                 case (States.STATE2):
                     /// PlaceHolder
+                    EndAll();
+                    NextTurn();
+                    ///
                     PrintDebugText(currentState, to);
                     currentState = States.STATE2;
                     break;
 
                 case (States.STATE3):
                     /// PlaceHolder
+                    EndAll();
+                    NextTurn();
+                    ///
                     PrintDebugText(currentState, to);
                     currentState = States.STATE3;
                     break;
 
                 case (States.STATE4):
                     /// PlaceHolder
+                    EndAll();
+                    NextTurn();
+                    ///
                     PrintDebugText(currentState, to);
                     currentState = States.STATE4;
                     break;
@@ -187,9 +202,32 @@ public class FSM_GamePlay : MonoBehaviour
     
     }
 
-    //void Start()
-    //{
-    //    HandleTransistion(States.STATE2);
-    //}
+    void EndAll()
+    {
+        foreach (GameObject p in players)
+        {
+            p.GetComponent<FSM_PlayerTurn>().m_cState = FSM_PlayerTurn.STATE.END;
+            p.GetComponent<FSM_PlayerTurn>().m_nState = FSM_PlayerTurn.STATE.END;
+        }
+    }
 
+    void NextTurn()
+    {
+        currentState++;
+
+        if ((int)currentState > players.Count)
+        {
+            currentState = States.STATE1;
+        }
+
+        players[(int)currentState].GetComponent<FSM_PlayerTurn>().m_nState = FSM_PlayerTurn.STATE.INIT;
+    }
+
+    void Start()
+    {
+        HandleTransistion(States.STATE2);
+    }
 }
+
+
+

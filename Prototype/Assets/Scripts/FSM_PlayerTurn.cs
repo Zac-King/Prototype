@@ -21,7 +21,7 @@ public class FSM_PlayerTurn : MonoBehaviour
     // the current state
     public STATE m_cState = STATE.INIT;
     // the next state
-    public STATE m_nSteate = STATE.INIT;
+    public STATE m_nState = STATE.INIT;
 
     // checks for a valid transition
     public bool CanTransition(STATE a_next)
@@ -98,10 +98,10 @@ public class FSM_PlayerTurn : MonoBehaviour
         }
 
         //////////////////////////Testing
-        if (m_cState != m_nSteate)
+        if (m_cState != m_nState)
         {
             print("Invalid Transition");
-            m_nSteate = m_cState;
+            m_nState = m_cState;
         }
         //////////////////////////End Testing
         return false;
@@ -109,6 +109,6 @@ public class FSM_PlayerTurn : MonoBehaviour
 
     void Update()
     {
-        HandelTransition(m_nSteate);
+        HandelTransition(m_nState);
     }
 }
