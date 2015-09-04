@@ -82,7 +82,7 @@ public class GUIObjButtons : MonoBehaviour
 
     public void draw(string n)
     {
-        TableManager.instance.m_deck[0].GetComponent<Card>().MoveCardTo(n);
+            TableManager.instance.m_deck[0].GetComponent<Card>().MoveCardTo(n);
     }
 
     public void buttonActions(string n)
